@@ -28,12 +28,32 @@ class LoginViewController: UIViewController {
      **/
     
     // MARK: - Properties
+    @IBOutlet weak var tfEmail: InputField!
+    @IBOutlet weak var tfPassword: InputField!
+    
+    @IBOutlet weak var btnSubmit: UIButton!
     private var client: LoginClient?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
+        
+        tfEmail.backgroundColor = .viewBackground
+        tfEmail.layer.opacity = 0.8
+        tfEmail.layer.cornerRadius = 5.0
+        tfEmail.clipsToBounds = true
+        tfEmail.layer.borderWidth = 0
+        
+        tfPassword.backgroundColor = .viewBackground
+        tfPassword.layer.opacity = 0.8
+        tfPassword.layer.cornerRadius = 5.0
+        tfPassword.clipsToBounds = true
+        tfPassword.layer.borderWidth = 0
+        
+        btnSubmit.backgroundColor = .headerBackground
+        btnSubmit.setTitleColor(.white, for: .normal)
+        
     }
     
     override func didReceiveMemoryWarning() {
