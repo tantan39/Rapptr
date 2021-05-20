@@ -19,10 +19,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
     MenuViewController *mainMenuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     
     self.navController = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
-    [self.navController setNavigationBarHidden:YES];
+    [self.navController setNavigationBarHidden:NO];
     self.window.rootViewController = self.navController;
 
     return YES;

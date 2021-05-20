@@ -56,6 +56,14 @@ struct Dimension {
         return 24
     }
     
+    public var largeHorizontalMargin_30: CGFloat {
+        return 30
+    }
+    
+    public var largeVerticalMargin_30: CGFloat {
+        return 30
+    }
+    
     public var largeHorizontalMargin_32: CGFloat {
         return 32
     }
