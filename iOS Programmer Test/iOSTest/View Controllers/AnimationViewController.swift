@@ -22,11 +22,16 @@ class AnimationViewController: UIViewController {
      *    section in Swfit to show off your skills. Anything your heart desires!
      *
      **/
+    @IBOutlet weak var mainButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Animation"
+        
+        mainButton.backgroundColor = .headerBackground
+        mainButton.setTitleColor(.white, for: .normal)
     }
     
     // MARK: - Actions
