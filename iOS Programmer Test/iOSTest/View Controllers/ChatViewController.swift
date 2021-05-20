@@ -39,15 +39,15 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         title = "Chat"
         
         // TODO: Remove test data when we have actual data from the server loaded
-        messages?.append(Message(testName: "James", withTestMessage: "Hey Guys!"))
-        messages?.append(Message(testName:"Paul", withTestMessage:"What's up?"))
-        messages?.append(Message(testName:"Amy", withTestMessage:"Hey! :)"))
-        messages?.append(Message(testName:"James", withTestMessage:"Want to grab some food later?"))
-        messages?.append(Message(testName:"Paul", withTestMessage:"Sure, time and place?"))
-        messages?.append(Message(testName:"Amy", withTestMessage:"YAS! I am starving!!!"))
-        messages?.append(Message(testName:"James", withTestMessage:"1 hr at the Local Burger sound good?"))
-        messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
-        messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
+//        messages?.append(Message(testName: "James", withTestMessage: "Hey Guys!"))
+//        messages?.append(Message(testName:"Paul", withTestMessage:"What's up?"))
+//        messages?.append(Message(testName:"Amy", withTestMessage:"Hey! :)"))
+//        messages?.append(Message(testName:"James", withTestMessage:"Want to grab some food later?"))
+//        messages?.append(Message(testName:"Paul", withTestMessage:"Sure, time and place?"))
+//        messages?.append(Message(testName:"Amy", withTestMessage:"YAS! I am starving!!!"))
+//        messages?.append(Message(testName:"James", withTestMessage:"1 hr at the Local Burger sound good?"))
+//        messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
+//        messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
         
     }
     
@@ -56,7 +56,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         client?.fetchChatData({ [weak self] (data) in
             guard let self = self,let messages = data  else { return }
             self.messages = messages
-            self.chatTable.reloadData()
+            DispatchQueue.main.async {
+                self.chatTable.reloadData()
+            }
             
         }, withError: { (error) in
             let ok = UIAlertAction(title: "OK", style: .default) { _ in }
@@ -76,6 +78,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.backgroundColor = .viewBackground
         
         tableView.estimatedRowHeight = 160
+        tableView.separatorStyle = .none
     }
     
     // MARK: - UITableViewDataSource
@@ -86,17 +89,17 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell = nibs?[0] as? ChatTableViewCell
         }
         cell?.setCellData(message: messages![indexPath.row])
-        return cell!
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages!.count
+        return messages?.count ?? 0
     }
     
     // MARK: - UITableViewDelegate
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 58.0
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
     // MARK: - IBAction
     @IBAction func backAction(_ sender: Any) {

@@ -44,14 +44,16 @@
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dVK-GY-2RA">
                         <rect key="frame" x="16" y="16" width="30" height="30"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="654-xO-viO"/>
                             <constraint firstAttribute="height" constant="30" id="Sy9-qC-aq6"/>
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="RHa-IP-dYs" secondAttribute="bottom" constant="4" id="7ap-b8-KeX"/>
+                    <constraint firstAttribute="bottom" secondItem="RHa-IP-dYs" secondAttribute="bottom" constant="8" id="7ap-b8-KeX"/>
                     <constraint firstAttribute="trailing" secondItem="RHa-IP-dYs" secondAttribute="trailing" constant="36" id="DSD-2i-hFA"/>
                     <constraint firstItem="RHa-IP-dYs" firstAttribute="top" secondItem="NHn-U7-rWh" secondAttribute="bottom" constant="4" id="N6L-s2-Mal"/>
                     <constraint firstItem="RHa-IP-dYs" firstAttribute="leading" secondItem="NHn-U7-rWh" secondAttribute="leading" id="NOe-GS-fzo"/>

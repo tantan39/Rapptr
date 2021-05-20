@@ -39,7 +39,7 @@ class ChatTableViewCell: UITableViewCell {
         header.textColor = .message
         header.numberOfLines = 1
         
-        bubbleView.backgroundColor = .viewBackground
+        bubbleView.backgroundColor = .white
         bubbleView.layer.borderColor = UIColor(hex: "#EFEFEF").cgColor
         bubbleView.layer.borderWidth = 1.0
         bubbleView.layer.cornerRadius = 8.0
@@ -53,5 +53,16 @@ class ChatTableViewCell: UITableViewCell {
     func setCellData(message: Message) {
         header.text = message.username
         body.text = message.text
+        DispatchQueue.global().async {
+            if let url = message.avatarURL {
+                let data = try! Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self.userImageView.image = image
+                }
+            }
+            
+        }
+        
     }
 }
