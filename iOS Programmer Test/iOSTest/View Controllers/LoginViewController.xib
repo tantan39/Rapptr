@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
@@ -18,17 +18,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_login" translatesAutoresizingMaskIntoConstraints="NO" id="20J-oB-GES">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="rui-YM-dpD">
-                    <rect key="frame" x="30" y="64" width="315" height="213"/>
+                    <rect key="frame" x="30" y="108" width="354" height="213"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoa-Sh-ZA6" userLabel="UITextField" customClass="InputField" customModule="iOSTest" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="315" height="55"/>
+                            <rect key="frame" x="0.0" y="0.0" width="354" height="55"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="qVJ-Xv-PxT"/>
                             </constraints>
@@ -36,7 +36,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Yh-GL-2qX" userLabel="UITextField" customClass="InputField" customModule="iOSTest" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="79" width="315" height="55"/>
+                            <rect key="frame" x="0.0" y="79" width="354" height="55"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="VM2-u8-4H1"/>
                             </constraints>
@@ -44,7 +44,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNN-sf-pf9">
-                            <rect key="frame" x="0.0" y="158" width="315" height="55"/>
+                            <rect key="frame" x="0.0" y="158" width="354" height="55"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="55" id="OM3-Zt-3fU"/>
                             </constraints>
@@ -69,15 +69,15 @@
             <viewLayoutGuide key="safeArea" id="25A-Ap-Xh0"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="20J-oB-GES" secondAttribute="bottom" id="46S-c1-Ym7"/>
                 <constraint firstItem="20J-oB-GES" firstAttribute="leading" secondItem="25A-Ap-Xh0" secondAttribute="leading" id="Aew-0l-vyw"/>
                 <constraint firstAttribute="trailing" secondItem="rui-YM-dpD" secondAttribute="trailing" constant="30" id="m1b-yH-f94"/>
                 <constraint firstItem="rui-YM-dpD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="rZE-HH-ege"/>
                 <constraint firstItem="20J-oB-GES" firstAttribute="top" secondItem="25A-Ap-Xh0" secondAttribute="top" id="sfF-Vq-ZTS"/>
                 <constraint firstItem="25A-Ap-Xh0" firstAttribute="trailing" secondItem="20J-oB-GES" secondAttribute="trailing" id="tRC-Gk-nIK"/>
                 <constraint firstItem="rui-YM-dpD" firstAttribute="top" secondItem="25A-Ap-Xh0" secondAttribute="top" constant="64" id="uAZ-el-yGg"/>
-                <constraint firstItem="25A-Ap-Xh0" firstAttribute="bottom" secondItem="20J-oB-GES" secondAttribute="bottom" id="wQa-tm-uM0"/>
             </constraints>
-            <point key="canvasLocation" x="551.20000000000005" y="312.59370314842579"/>
+            <point key="canvasLocation" x="550.72463768115949" y="312.05357142857139"/>
         </view>
     </objects>
     <resources>

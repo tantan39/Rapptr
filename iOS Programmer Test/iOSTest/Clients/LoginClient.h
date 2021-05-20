@@ -7,5 +7,5 @@
 #import <Foundation/Foundation.h>
 
 @interface LoginClient : NSObject
-- (void)loginWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSDictionary *))completion;
+- (void)loginWithEmail:(NSString *)email password:(NSString *)password completion:(void (^)(NSDictionary *, NSString *))completion;
 @end

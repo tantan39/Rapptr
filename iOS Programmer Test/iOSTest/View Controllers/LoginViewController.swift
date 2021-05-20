@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
+        client = LoginClient()
         
         tfEmail.backgroundColor = .viewBackground
         tfEmail.layer.opacity = 0.8
@@ -55,12 +56,7 @@ class LoginViewController: UIViewController {
         btnSubmit.setTitleColor(.white, for: .normal)
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+        
     // MARK: - Actions
     @IBAction func backAction(_ sender: Any) {
         let mainMenuViewController = MenuViewController()
@@ -68,5 +64,36 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didPressLoginButton(_ sender: Any) {
+        guard let email = tfEmail.text, let password = tfPassword.text else { return }
+        let started = NSDate()
+        
+        client?.login(withEmail: email, password: password, completion: { [weak self] (json, error) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                
+                if let msg = error {
+                    self.showAlert("Error", message: msg)
+                } else {
+                    guard let json = (json ?? [:]) as? [String: String] else { return }
+                    let msg = json["message"]
+                    let after = NSDate().timeIntervalSince(started as Date).rounded()
+                    self.showAlert("Success", message: "\(String(describing: msg!)) and it takes \(after * 1000) miliseconds" , handleAction: {
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            }
+            
+        })
+    }
+    
+    private func showAlert(_ title: String = "", message: String = "", handleAction: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { _ in
+            handleAction?()
+        })
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true)
+
     }
 }
