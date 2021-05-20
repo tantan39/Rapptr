@@ -31,8 +31,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        client = ChatClient();
         messages = [Message]()
+        
+        fetchChatMessage()
         configureTable(tableView: chatTable)
         title = "Chat"
         
@@ -47,15 +49,33 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
         messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
         
-        chatTable.reloadData()
     }
     
     // MARK: - Private
+    private func fetchChatMessage() {
+        client?.fetchChatData({ [weak self] (data) in
+            guard let self = self,let messages = data  else { return }
+            self.messages = messages
+            self.chatTable.reloadData()
+            
+        }, withError: { (error) in
+            let ok = UIAlertAction(title: "OK", style: .default) { _ in }
+            let alert = UIAlertController(title: "Alert", message: error ?? "", preferredStyle: .alert)
+            alert.addAction(ok)
+            
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
+    
     private func configureTable(tableView: UITableView) {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ChatTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatTableViewCell")
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.backgroundView?.backgroundColor = .viewBackground
+        tableView.backgroundColor = .viewBackground
+        
+        tableView.estimatedRowHeight = 160
     }
     
     // MARK: - UITableViewDataSource
@@ -74,9 +94,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 58.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 58.0
+//    }
     
     // MARK: - IBAction
     @IBAction func backAction(_ sender: Any) {
